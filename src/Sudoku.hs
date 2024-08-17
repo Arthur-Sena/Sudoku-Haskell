@@ -4,7 +4,6 @@ import Validacao (validarJogada)
 import Tipos 
 import System.Random (randomRIO)
 
-
 geradorTabuleiroVazio :: Sudoku
 geradorTabuleiroVazio = replicate 9 (replicate 9 0)
 
@@ -78,7 +77,7 @@ preenchendoTabuleiro sudoku = preenche' sudoku (0, 0)
       where
         tryMove n acc
             | validarJogada b n (line, col) = case preenche' (salvarJogada b (line, col, n)) (line, col + 1) of
-                Just filledBoard -> Just filledBoard
+                Just sudokuPreenchido -> Just sudokuPreenchido
                 Nothing -> acc
             | otherwise = acc
 
@@ -101,5 +100,5 @@ jogadaComputador sudoku = do
 solucionarSudoku :: Sudoku -> IO (Maybe Sudoku)
 solucionarSudoku sudoku = do
     case preenchendoTabuleiro sudoku of
-        Just (SudokuBoard filledBoard) -> return (Just filledBoard)
+        Just (SudokuBoard tabuleiro) -> return (Just tabuleiro)
         Nothing -> return Nothing

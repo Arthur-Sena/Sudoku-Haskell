@@ -29,10 +29,27 @@ mainMenu = do
             putStrLn "Opção inválida. Tente novamente."
             mainMenu
 
+--USEI ESSE MOCK SÓ PRA TESTAR O SOLUCIONADOR DE SUDOKU
+--CASO QUEIRA TESTAR TAMBEM É SÓ COLOCAR OS NÚMEROS AI E INICIAR O JOGO NORMALMENTE
+--EM QUALQUER NIVEL DE DIFICULDADE, DEPOIS DIGITA 10 0 0 PARA VER O "GABARITO"
+sudokuMock :: Sudoku 
+sudokuMock = [[0,0,0,0,0,0,0,0,0], --1
+              [0,0,0,0,0,0,0,0,0], --2
+              [0,0,0,0,0,0,0,0,0], --3
+              [0,0,0,0,0,0,0,0,0], --4
+              [0,0,0,0,0,0,0,0,0], --5
+              [0,0,0,0,0,0,0,0,0], --6
+              [0,0,0,0,0,0,0,0,0], --7
+              [0,0,0,0,0,0,0,0,0], --8
+              [0,0,0,0,0,0,0,0,0]] --9
+            -- 1 2 3 4 5 6 7 8 9
+
+
 startSudoku :: Int -> IO ()
 startSudoku qntCasasPreenchidasInicialmente = do
     tabuleiro <- sudokuGenerator qntCasasPreenchidasInicialmente
     sudokuLoop tabuleiro
+    --    sudokuLoop sudokuMock
 
 sudokuLoop :: Sudoku -> IO ()
 sudokuLoop tabuleiro = do
