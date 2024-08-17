@@ -22,6 +22,7 @@ executable sudoku
   build-depends:       base >= 4.7 && < 5
                        , random
                        , containers
+                       , QuickCheck >=2.14
   ghc-options:         -Wall
                        -Wcompat
                        -Widentities
@@ -34,3 +35,16 @@ executable sudoku
   other-modules:  Tipos
                   , Validacao
                   , Sudoku
+                  , Testes
+                  
+test-suite sudoku-tests
+  type:              exitcode-stdio-1.0
+  hs-source-dirs:    src
+  main-is:           Testes.hs
+  build-depends:     base >=4.7 && <5
+                     , random
+                     , containers
+                     , QuickCheck >= 2.14
+  other-modules:    Tipos
+                    , Validacao
+  default-language:  Haskell2010
